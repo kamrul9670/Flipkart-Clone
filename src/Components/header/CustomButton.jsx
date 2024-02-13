@@ -1,10 +1,18 @@
 
+    import { useState ,useContext } from 'react';
+
 import React from 'react'
-  import { Box, Button, Typography , styled } from '@mui/material';
+        import { Box, Button, Typography , styled } from '@mui/material';
 
+        import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+ 
+          import { DataContext } from '../../context/DataProvider';
 
-  import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+    // component
 
+  import LoginDialog from '../login/LoginDialog';
+
+  import Profile from './Profile';
   const Wrapper = styled(Box)`
   display : flex ;
   align-items : center;
@@ -19,7 +27,6 @@ import React from 'react'
 `
 
 
-
      const Container = styled(Box)`
      
      display : flex ;
@@ -27,19 +34,18 @@ import React from 'react'
      `
 
 
-  const LoginButton = styled(Button)`
+   const LoginButton = styled(Button)`
   
   
-  margin-left: 5px;
-  color :#2874f0 ;
-  background-color: #fff;
-  text-transform: none;
-  padding: 5px 40px;
-  border-radius: 2px;
-  box-shadow: none;
-  font-weight: 600;
-  height : 32px;
-  
+      margin-left: 20px;
+      color :#2874f0 ;
+      background-color: #fff;
+      text-transform: none;
+      padding: 5px 40px;
+      border-radius: 2px;
+      box-shadow: none;
+       font-weight: 600;
+       height : 32px;
   
   
   
@@ -49,15 +55,26 @@ import React from 'react'
 
 
 
-
-
-
   const CustomButton = () => {
+
+
+     const [open , setOpen] = useState(false);
+   const {account , setAccount} = useContext(DataContext);
+       const openDialog = () => {
+        setOpen(true);
+       }
+
+
   return (
 
     <Wrapper>
+  {
+    account ? <Profile account={account} setAccount={setAccount} /> : 
+    <LoginButton variant="contained" onClick={()=> openDialog()} > Login </LoginButton>
+  }
 
-     <LoginButton variant="contained" > Login </LoginButton>
+
+     {/* <LoginButton variant="contained" onClick={()=> openDialog()} > Login </LoginButton> */}
 
 
      <Typography style={{marginTop: 3 , width : 140 }}>Become a seller</Typography>
@@ -69,7 +86,7 @@ import React from 'react'
         <Typography>Cart</Typography>
 
      </Container>
-
+        <LoginDialog open={open} setOpen={setOpen} />
 
     </Wrapper>
   
