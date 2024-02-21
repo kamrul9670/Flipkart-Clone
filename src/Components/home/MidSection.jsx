@@ -6,22 +6,24 @@ import React from 'react'
    import { Grid , styled } from '@mui/material';
 
 
-     const Wrapper = styled(Grid)`
-     
-        margin-top:10px;
-        justify-content : space-between;
-     
-     
-     `;
+   
+const Wrapper = styled(Grid)`
+display: flex;
+margin-top: 20px;
+justify-content: space-between;
+`;
 
-     const Image = styled('img')({
+const Image = styled('img')(({ theme }) => ({ 
+display: 'flex',
+marginTop: 20,
+justifyContent: 'space-between',
+width: '100%',
+[theme.breakpoints.down('md')]: {
+    objectFit: 'cover',
+    height: 120
+}
+}));
 
-        marginTop: 10,
-        width : '100%',
-        display : 'flex',
-        justifyContent : 'space-between'
-
-     })
 
 
 const MidSection = () => {

@@ -4,28 +4,29 @@
      import { Box , styled } from "@mui/material";
 
       
-      const Component = styled(Box)`
-      
-        display : flex;
+ 
+const Component = styled(Box)`
+display: flex;
+`
 
-      `;
+const LeftComponent = styled(Box)(({ theme}) => ({
+width: '83%',
+[theme.breakpoints.down('md')]: {
+    width: '100%'
+}
+}))
 
-    const LeftComponent = styled(Box)`
-    
-       width : 83% ;
-    `;
-
-    const RightComponent = styled(Box)`
-    
-      background : #FFFFFF;
-      padding : 5px ;
-      margin-top : 10px ;
-      margin-left : 10px;
-      width : 17%;
-      text-align : center;
-   
- `;
-
+const RightComponent = styled(Box)(({ theme}) => ({
+marginTop: 10,
+background: '#FFFFFF',
+width: '17%',
+marginLeft: 10,
+padding: 5,
+textAlign: 'center',
+[theme.breakpoints.down('md')]: {
+    display: 'none'
+}
+}));
      const MidSlide = ({products ,title , timer }) => {
 
 

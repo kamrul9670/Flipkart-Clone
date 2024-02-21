@@ -8,12 +8,15 @@ import React from 'react'
 
    import {styled } from '@mui/material';
 
-      const Image = styled('img')({
-
-       width : "100%" ,
-       height : 280
-
-      })
+      
+const Image = styled('img')(({ theme }) => ({
+  width: '100%',
+  height: 280,
+  [theme.breakpoints.down('sm')]: {
+      objectFit: 'cover',
+      height: 180
+  }
+}));
 
 
 

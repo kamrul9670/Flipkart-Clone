@@ -30,64 +30,54 @@
   };
 
 
-    const Component = styled(Box)`
-       margin-top : 10px;
-        background : #FFFFFF;
-    
-    `;
+  
+const Component = styled(Box)`
+margin-top: 10px;
+background: #FFFFFF;
+`;
 
-    const Deal = styled(Box)`
-      
-     padding : 15px 20px ;
-     display : flex;
-    `
+const Deal = styled(Box)`
+display: flex;    
+padding: 15px 20px;
+`
 
-      const Timer = styled(Box)`
-      
-        display : flex;
-        margin-left : 10px;
-        align-item : center;
-        color : #7f7f7f;
-      
-      
-      `;
+const DealText = styled(Typography)`
+font-size: 22px;
+font-weight: 600;
+line-height: 32px;
+margin-right: 25px;
+`
 
-      const DealText = styled(Typography)`
-      
-       font-size : 22px;
-       font-weight : 600;
-       margin-right: 25px;
-       line-height : 32px;
+const Timer = styled(Box)`
+color: #7f7f7f;
+margin-left: 10px;
+display: flex;
+align-items: center;
+`;
 
-      
-      
-      `;
+const ViewAllButton = styled(Button)`
+margin-left: auto;
+background-color: #2874f0;
+border-radius: 2px;
+font-size: 13px;
+`;
 
-     const ViewAllButton = styled(Button)`
-       
-        margin-left : auto ;
+const Image = styled('img')({
+width: 'auto',
+height: 150
+})
 
-        background-color : #2874f0;
+const Text = styled(Typography)`
+font-size: 14px;
+margin-top: 5px
+`
 
-        border-radius : 2px;
-        font-size : 13px ;
-        font-weight : 600;
-     
-     
-     `
+// const RenderTimer = styled(Box)(({ theme }) => ({
+// [theme.breakpoints.down('sm')]: {
+//     display: 'none'
+// }
+// }));
 
-        const Image = styled('img')({
-            width : 'auto',
-            height : 150
-        });
-
-        const Text =styled(Typography)`
-        
-          font-size : 14px;
-          margin-top : 5px;
-        
-        
-        `
 
 
 

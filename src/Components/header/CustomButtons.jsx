@@ -1,5 +1,7 @@
 
-    import { useState ,useContext } from 'react';
+
+
+import { useState ,useContext } from 'react';
 
 import React from 'react'
         import { Box, Button, Typography , styled } from '@mui/material';
@@ -13,29 +15,52 @@ import React from 'react'
   import LoginDialog from '../login/LoginDialog';
 
   import Profile from './Profile';
-  const Wrapper = styled(Box)`
-  display : flex ;
-  align-items : center;
-  margin :  0 14% 0 auto;
+
+
+  const Wrapper = styled(Box)(({theme}) => ({
+
+
+
+      
+  display : 'flex' ,
+  alignItems : 'center',
+  margin :  '0 14% 0 auto',
    
-  &> button , &> p , &> div{
-    margin-right :  2.4vw; ;
-    font-size : 0.9vw;
-  }
+  '& > * ' : {
+    marginRight :  40 ,
+    fontSize : 16 ,
+    textAlign : 'center'
+  },
+
+  [theme.breakpoints.down('md')] : {
+
+    display : 'block'
+}
 
 
-`
+  }));
+
+ 
 
 
-     const Container = styled(Box)`
+
+
+
+     const Container = styled(Box)(({theme}) => ({
+        display : 'flex' ,
+
+
+        [theme.breakpoints.down('md')] : {
+
+            display : 'block'
+        }
+
+     }))
      
-     display : flex ;
      
-     `
 
 
    const LoginButton = styled(Button)`
-  
   
       margin-left: 20px;
       color :#2874f0 ;
@@ -48,8 +73,7 @@ import React from 'react'
        height : 32px;
   
   
-  
-  `
+  `;
 
 
 

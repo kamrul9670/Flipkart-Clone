@@ -1,10 +1,19 @@
-import { Toolbar ,AppBar ,styled ,Box , Typography } from "@mui/material";
+import { Toolbar ,AppBar ,styled ,Box , Typography, IconButton,List ,Drawer} from "@mui/material";
 
+
+    import {Menu} from '@mui/icons-material';
 import Search from "./Search";
 
- import CustomButton from "./CustomButton";
+ import CustomButtons from "./CustomButtons";
 
     import { Link } from "react-router-dom";
+
+      import { useState } from "react";
+   
+
+          const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
+ const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
+
 
 const StyledHeader = styled(AppBar)`
 background: #2974f0;
@@ -33,38 +42,82 @@ const PlusImage = styled('img')({
   
   `
 
+     const MenuButton = styled(IconButton)(({theme}) => ({
+      
+       display : 'none',
+
+       [theme.breakpoints.down('md')] :   {
+
+         display : 'block'
+       }
+
+
+     }))
 
      const Header = () => {
 
-   const logoUrl = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
+  //  const logoUrl = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
 
 
-   const subUrl = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
+  //  const subUrl = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
+
+
+       const [open , setOpen] = useState(false);
+
+       const handleOpen = () => {
+      
+          setOpen(true);
+
+       }
+     const handleClose = () => {
+
+       setOpen(false);
+     }
+
+     const list = () => (
+      <Box style={{ width: 250 }} onClick={handleClose}>
+          <List>
+              <listItem button>
+                  <CustomButtons />
+              </listItem>
+          </List>
+      </Box>
+  );
+
+
 
   return (
    
-    <StyledHeader>
-        <Toolbar style={{minHeight : 55}}>
-          <Component to="/">
-        <img src={logoUrl} alt='logo' style={{width : 70}} />
+    <StyledHeader position="fixed">
+            <Toolbar style={{ minHeight: 55 }}>
+                <MenuButton
+                    color="inherit"
+                    onClick={handleOpen}
+                >
+                    <Menu />
+                </MenuButton>
 
-        <Box style={{display:'flex'}}>
-            <SubHeading> Explore&nbsp;
-                <Box component="span" style={{color : 'yellow'}}>   Plus   </Box>   
-                </SubHeading>
-
-                <PlusImage src={subUrl} alt="plus_logo"  />  
-        </Box>
-          </Component>
-          <Search />
-          <CustomButtonWrapper>
-
-  <CustomButton />
-
-          </CustomButtonWrapper>
-
-        </Toolbar>
-    </StyledHeader>
+                <Drawer open={open} onClose={handleClose}>
+                    {list()}
+                </Drawer>
+                
+                <Component to='/'>
+                    <img src={logoURL} alt="logo" style={{ width: 75 }} />
+                    <Box component="span" style={{ display: 'flex' }}>
+                        <SubHeading>Explore&nbsp;
+                            <Box component="span" style={{color:'#FFE500'}}>
+                                Plus
+                            </Box>
+                        </SubHeading>
+                        <PlusImage src={subURL} />
+                    </Box>
+                </Component>
+                <Search />
+                <CustomButtonWrapper>
+                    <CustomButtons />
+                </CustomButtonWrapper>
+            </Toolbar>
+        </StyledHeader>
   )
 
      }
