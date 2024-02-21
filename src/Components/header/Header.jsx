@@ -4,14 +4,18 @@ import Search from "./Search";
 
  import CustomButton from "./CustomButton";
 
+    import { Link } from "react-router-dom";
+
 const StyledHeader = styled(AppBar)`
 background: #2974f0;
 height : 3.6rem;
 
 `
-const Component = styled(Box)`
+const Component = styled(Link)`
 margin-left : 12vw;
 line-height : 0;
+text-decoration : none ;
+color : inherit;
 `
 const SubHeading = styled(Typography)`
 font-size : 0.5rem;
@@ -41,7 +45,7 @@ const PlusImage = styled('img')({
    
     <StyledHeader>
         <Toolbar style={{minHeight : 55}}>
-          <Component>
+          <Component to="/">
         <img src={logoUrl} alt='logo' style={{width : 70}} />
 
         <Box style={{display:'flex'}}>

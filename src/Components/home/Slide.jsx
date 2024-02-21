@@ -7,7 +7,8 @@
      import 'react-multi-carousel/lib/styles.css';
 
      import Countdown from 'react-countdown';
-
+    
+      import {Link} from 'react-router-dom';
 
      import { Box, Typography , Button , Divider, styled } from '@mui/material';
 
@@ -140,7 +141,9 @@
     >
         {
             products.map(product => (
-                <Box textAlign="center" style={{padding : '25px 15px' }}>
+
+              <Link to={`product/${product.id}`} style={{textDecoration: 'none'}}>
+                              <Box textAlign="center" style={{padding : '25px 15px' }}>
         
         <Image src={product.url} alt="product"  />
         <Text style={{fontWeight : 600 , color : '#212121'}}>{product.title.shortTitle}</Text>
@@ -148,6 +151,8 @@
         <Text  style={{ color : '#212121' , opacity : '.6'}}> {product.tagline}</Text>
 
                 </Box>
+                </Link>
+
                
             ))
         }

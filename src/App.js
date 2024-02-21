@@ -6,26 +6,32 @@ import Header from './Components/header/Header';
   
   import DataProvider from './context/DataProvider';
 
+  import { BrowserRouter ,Routes , Route } from 'react-router-dom';
+  
+    import DetailView from './Components/details/DetailView';
 
    import { Box } from '@mui/material';
 
 function App() {
   return (
-   <DataProvider>
 
+/* <TemplateProvider>
+      <ContextProvider> */
+        <DataProvider>
+        <BrowserRouter>
+          <Header />
+          <Box style={{marginTop: 54}}>
+            <Routes>
+              <Route path= '/' element={<Home />} />
+              {/* <Route path= '/cart' element={<Cart />} /> */}
+              <Route path= '/product/:id' element={<DetailView />} />
+            </Routes>
+          </Box>
+        </BrowserRouter>
+        </DataProvider>
+    //   </ContextProvider>
+    // </TemplateProvider>
 
-
-   <Header />
-
-   <Box style={{marginTop:55 }}>
-
-   <Home  />
-
-   </Box>
- 
-   
-   
-   </DataProvider>
   );
 }
 
